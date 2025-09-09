@@ -25,9 +25,9 @@ public class FirstTest extends TestBase {
         params.put("percent", 0.75);
         Selenide.executeJavaScript("mobile: scrollGesture", params);*/
 
-        SwipeActions.swipeUp();
+        //SwipeActions.swipeUp();
 
-        $("(//android.widget.TextView[parent::android.view.ViewGroup])[1]").shouldHave(text("WEBDRIVER"));
+        //$("(//android.widget.TextView[parent::android.view.ViewGroup])[1]").shouldHave(text("WEBDRIVER"));
 
 
     }

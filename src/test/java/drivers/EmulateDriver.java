@@ -14,6 +14,7 @@ import java.net.URL;
 import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
 import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 
+
 public class EmulateDriver implements WebDriverProvider {
 
     @Nonnull
