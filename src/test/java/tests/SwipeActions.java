@@ -16,8 +16,7 @@ import java.time.Duration;
 public class SwipeActions extends TestBase {
 
     // Метод для свайпа вверх
-    public static void swipeUp() {
-        WebDriver driver = WebDriverRunner.getWebDriver();
+    public static void swipeUp(WebDriver driver) {
         Dimension size = driver.manage().window().getSize();
 
         int startX = size.width / 2;
@@ -92,13 +91,13 @@ public class SwipeActions extends TestBase {
     }
 
     // Метод для свайпа до появления элемента
-    public static void swipeUntilElementVisible(String elementSelector, int maxSwipes, SwipeDirection direction) {
+    public static void swipeUntilElementVisible(String elementSelector, int maxSwipes, SwipeDirection direction, WebDriver driver) {
         int attempts = 0;
 
         while (attempts < maxSwipes && !Selenide.$(elementSelector).isDisplayed()) {
             switch (direction) {
                 case UP:
-                    swipeUp();
+                    swipeUp(driver);
                     break;
                 case DOWN:
                     swipeDown();

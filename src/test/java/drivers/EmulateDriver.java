@@ -3,10 +3,10 @@ package drivers;
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import org.jspecify.annotations.NonNull;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,9 +17,9 @@ import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 
 public class EmulateDriver implements WebDriverProvider {
 
-    @Nonnull
+    @NonNull
     @Override
-    public WebDriver createDriver(@Nonnull Capabilities capabilities) {
+    public WebDriver createDriver(@NonNull Capabilities capabilities) {
 
         UiAutomator2Options options = new UiAutomator2Options();
 

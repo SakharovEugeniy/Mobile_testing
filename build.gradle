@@ -28,10 +28,12 @@ allure {
 
 dependencies {
 
+    implementation 'com.codeborne:selenide-appium:7.10.0'
+    implementation 'org.jspecify:jspecify:1.0.0'
+
     testImplementation(
 
             'io.rest-assured:rest-assured:5.5.6',
-            'com.codeborne:selenide:7.7.3',
             'io.qameta.allure:allure-selenide:2.29.1',
             'io.appium:java-client:9.4.0',
             'commons-io:commons-io:2.20.0',
