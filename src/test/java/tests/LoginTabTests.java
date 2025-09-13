@@ -1,16 +1,8 @@
 package tests;
 
-
-import io.appium.java_client.AppiumBy;
 import models.LoginTabModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
-import static com.codeborne.selenide.appium.AppiumSelectors.withText;
-import static com.codeborne.selenide.appium.SelenideAppium.$;
-import static io.appium.java_client.AppiumBy.accessibilityId;
 
 public class LoginTabTests extends TestBase {
 
@@ -27,27 +19,41 @@ public class LoginTabTests extends TestBase {
         loginTab.clickLoginTab().setEmail(EMAIL).setPassword(PASS).clickButtonLogin().loginSuccess();
     }
 
-
-
     @Test
-    void successfulSearchTest() {
-
-        //$(AppiumBy.xpath(".//*[@content-desc='Login']")).click();
-        $(accessibilityId("Login")).click();
-        $(accessibilityId("input-email")).click(tap()).setValue("123@mail.ru");
-        $(accessibilityId("input-password")).click(tap()).setValue("12345678");
-        $(AppiumBy.xpath(".//*[@content-desc='button-LOGIN']")).click(tap());
-        $(withText("You are logged in!")).shouldBe(visible);
-
+    @DisplayName("Проверка невозможности логина с пустыми полями")
+    void emptyEmailAndPasswordTest() {
+        loginTab.clickLoginTab().clickButtonLogin().emailIsWrong().passIsWrong();
     }
 
-
     @Test
-    void emptyCred() {
-        $(accessibilityId("Login")).click();
-        $(AppiumBy.xpath(".//*[@content-desc='button-LOGIN']")).click(tap());
-        $(AppiumBy.xpath(".//*[@text='Please enter a valid email address']")).shouldBe(visible);
-        $(AppiumBy.xpath(".//*[@text='Please enter at least 8 characters']")).shouldBe(visible);
+    @DisplayName("Проверка невозможности логина с неправильным email")
+    void wrongEmailTest() {
+        loginTab.clickLoginTab().setEmail(WRONG_EMAIL).setPassword(PASS).clickButtonLogin().emailIsWrong();
     }
 
+    @Test
+    @DisplayName("Проверка невозможности логина с паролем меньше 8 символов")
+    void invalidPasswordTest() {
+        loginTab.clickLoginTab().setEmail(EMAIL).setPassword(WRONG_PASS).clickButtonLogin().passIsWrong();
+    }
+
+    @Test
+    @DisplayName("Успешная проверка регистрации")
+    void successSubmitRegistrationTest() {
+        loginTab.clickLoginTab().clickSignUpTab().setEmail(EMAIL).setPassword(PASS).setConfirmPassword(PASS)
+                .clickButtonSignUp().signUpSuccess();
+    }
+
+    @Test
+    @DisplayName("Проверка невозможности регистрации с пустым полем подтверждения пароля")
+    void emptyConfirmPasswordTest() {
+        loginTab.clickLoginTab().clickSignUpTab().setEmail(EMAIL).setPassword(PASS).clickButtonSignUp().repeatPassIsWrong();
+    }
+
+    @Test
+    @DisplayName("Проверка невозможности регистрации при неподтверждении пароля")
+    void wrongConfirmPasswordTest() {
+        loginTab.clickLoginTab().clickSignUpTab().setEmail(EMAIL).setPassword(PASS).setConfirmPassword(WRONG_PASS)
+                .clickButtonSignUp().repeatPassIsWrong();
+    }
 }
