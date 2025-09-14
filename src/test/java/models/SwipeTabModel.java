@@ -63,9 +63,6 @@ public class SwipeTabModel {
     public SwipeTabModel scrollToWebdriverLogo() {
         webdriverLogo.scroll(AppiumScrollOptions.down(0.09f, 0.39f))
                 .scrollTo().shouldBe(visible);
-        ;
         return this;
     }
-
-
 }
