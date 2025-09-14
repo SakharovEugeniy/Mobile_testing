@@ -6,17 +6,16 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.DragAndDropOptions.to;
-import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static io.appium.java_client.AppiumBy.accessibilityId;
 
 public class DragTabModel {
 
-    private final SelenideAppiumElement dragTab = $(accessibilityId("Drag"));
-    private final SelenideAppiumElement startDragTabText = $(AppiumBy.xpath(".//*[@text='Drag and Drop']"));
-    private final SelenideAppiumElement successDragAndDrop = $(AppiumBy.xpath(".//*[@text='You made it, click retry if you want to try it again.']"));
-    private final SelenideAppiumElement renewButton = $(accessibilityId("renew"));
-    private final SelenideAppiumElement retryButton = $(accessibilityId("button-Retry"));
+    private final SelenideAppiumElement dragTab = $(accessibilityId("Drag")),
+            startDragTabText = $(AppiumBy.xpath(".//*[@text='Drag and Drop']")),
+            successDragAndDrop = $(AppiumBy.xpath(".//*[@text='You made it, click retry if you want to try it again.']")),
+            renewButton = $(accessibilityId("renew")),
+            retryButton = $(accessibilityId("button-Retry"));
 
 
     @Step("Переходим на вкладку Drag")
@@ -36,7 +35,7 @@ public class DragTabModel {
         successDragAndDrop.shouldBe(visible);
         return this;
     }
-    
+
 
     public DragTabModel dragAndDropElement(DragElement source, DragElement target) {
         source.getElement().dragAndDrop(to(target.getElement()));

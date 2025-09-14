@@ -10,7 +10,7 @@ public class DragTabTests extends TestBase {
     DragTabModel dragTab = new DragTabModel();
 
     @Test
-    @DisplayName("Проверка перехода на вкладку Drag и отображения сообщения Drag and Drop")
+    @DisplayName("Проверка перехода на вкладку Drag и отображения текста Drag and Drop")
     void homeScreenTabSwipeTest() {
         dragTab.clickDragTab().checkDragTabText();
     }

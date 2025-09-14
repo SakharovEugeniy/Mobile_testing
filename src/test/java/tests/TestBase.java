@@ -10,8 +10,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.appium.SelenideAppium.$;
+import static io.appium.java_client.AppiumBy.accessibilityId;
 
 public class TestBase {
     @BeforeAll
@@ -25,6 +28,7 @@ public class TestBase {
     void beforeEach() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open();
+        $(accessibilityId("Home-screen")).shouldBe(visible);
     }
 
     @AfterEach
