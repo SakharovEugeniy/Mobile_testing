@@ -29,7 +29,9 @@ public class EmulateDriver implements WebDriverProvider {
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName(ANDROID)
                 .setPlatformVersion("11.0")
+                //.setPlatformVersion("12.0")
                 .setDeviceName("Pixel 4")
+                //.setDeviceName("RF8N63T9X2T")
                 .setApp(apkPath)
                 .setAppPackage("com.wdiodemoapp")
                 .setAppActivity("com.wdiodemoapp.MainActivity");

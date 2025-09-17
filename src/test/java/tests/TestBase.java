@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.appium.SelenideAppium;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import drivers.EmulateDriver;
 import helpers.Attach;
@@ -32,11 +33,13 @@ public class TestBase {
     }
 
     @AfterEach
-    void addAttachments() {
+    void tearDown() {
         String sessionId = Selenide.sessionId().toString();
         System.out.println(sessionId);
 
         Attach.pageSource();
+
+        SelenideAppium.terminateApp("com.android.chrome");
         closeWebDriver();
     }
 }
