@@ -1,17 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
-import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
 import models.WebviewTabModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.JavascriptExecutor;
-
-
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.appium.SelenideAppium.$;
-import static io.appium.java_client.AppiumBy.accessibilityId;
 
 
 public class WebviewTabTests extends TestBase {
